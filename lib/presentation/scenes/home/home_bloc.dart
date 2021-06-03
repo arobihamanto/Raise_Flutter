@@ -5,8 +5,12 @@ class HomeBloc {
     return Home.fromJson(homeJSON);
   }
 
+  Section get topBanners {
+    return home.sections.firstWhere((element) => element.type == 'top_banners');
+  }
+
   String homeJSON =
-  '''
+  r"""
   {
   "sections": [
     {
@@ -2205,6 +2209,6 @@ class HomeBloc {
     }
   ]
 }
-  ''';
+  """;
 
 }
