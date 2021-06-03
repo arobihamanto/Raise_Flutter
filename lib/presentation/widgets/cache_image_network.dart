@@ -5,8 +5,10 @@ import 'dart:ui' as ui;
 class CacheImageNetwork extends StatelessWidget {
 
   final String imageURL;
+  final double height;
+  final double width;
 
-  CacheImageNetwork(this.imageURL);
+  CacheImageNetwork({this.imageURL, this.height, this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -16,8 +18,12 @@ class CacheImageNetwork extends StatelessWidget {
       imageUrl,
           (int _) => ImageElement()..src = imageUrl,
     );
-    return HtmlElementView(
-      viewType: imageUrl,
+    return Container(
+      height: height,
+      width: width,
+      child: HtmlElementView(
+        viewType: imageUrl,
+      ),
     );
   }
 

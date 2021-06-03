@@ -9,6 +9,10 @@ class HomeBloc {
     return home.sections.firstWhere((element) => element.type == 'top_banners');
   }
 
+  Section get dailyRanking {
+    return home.sections.firstWhere((element) => element.type == 'daily_ranking');
+  }
+
   String homeJSON =
   r"""
   {
