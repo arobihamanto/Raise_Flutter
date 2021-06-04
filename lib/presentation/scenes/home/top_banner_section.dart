@@ -16,10 +16,11 @@ class TopBannerSection extends StatefulWidget {
 class _TopBannerSectionState extends State<TopBannerSection> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     final banners = widget.section.banners;
     return Container(
       margin: EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
-      height: 164,
+      height: screenWidth / 5,
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
@@ -28,7 +29,7 @@ class _TopBannerSectionState extends State<TopBannerSection> {
           final banner = banners[index];
           return Padding(
               padding: EdgeInsets.only(left: kDefaultPadding / 2),
-              child: CacheImageNetwork(imageURL: banner.url, height: 164, width: 308)
+              child: CacheImageNetwork(imageURL: banner.url, width: screenWidth / 3)
           );
         },
       ),
