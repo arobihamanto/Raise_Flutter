@@ -13,6 +13,10 @@ class HomeBloc {
     return home.sections.firstWhere((element) => element.type == 'daily_ranking');
   }
 
+  Section get freOnlyNow {
+    return home.sections.firstWhere((element) => element.type == 'free_only_now');
+  }
+
   String homeJSON =
   r"""
   {
