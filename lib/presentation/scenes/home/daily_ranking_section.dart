@@ -30,46 +30,52 @@ class DailyRankingSection extends StatelessWidget {
           ),
           Expanded(
             flex: 5,
-            child: Row(
-              children: [
-                Expanded(
-                  child: LandscapeRank(work: works.first),
-                ),
-                Expanded(
-                    child: Container(
-                      child: Column(
-                        children: [
-                          Expanded(
-                            flex: 3,
-                            child: Row(
-                              children: [
-                                Expanded(child: SquareRank(work: works[1])),
-                                Expanded(child: SquareRank(work: works[2]))
-                              ],
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: LandscapeRank(work: works.first),
+                  ),
+                  Expanded(
+                      child: Container(
+                        child: Column(
+                          children: [
+                            Expanded(
+                              flex: 3,
+                              child: Row(
+                                children: [
+                                  Expanded(child: SquareRank(work: works[1])),
+                                  Expanded(child: SquareRank(work: works[2]))
+                                ],
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            flex: 2,
-                            child: Row(
-                              children: [
-                                Expanded(child: LandscapeRank(work: works[3])),
-                                Expanded(child: LandscapeRank(work: works[3]))
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ))
-              ],
+                            Expanded(
+                              flex: 2,
+                              child: Row(
+                                children: [
+                                  Expanded(child: LandscapeRank(work: works[3])),
+                                  Expanded(child: LandscapeRank(work: works[3]))
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ))
+                ],
+              ),
             ),
           ),
           Expanded(
               flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  ...works.map((e) => Container(width: SizeConfig.screenWidth / 7.8, child: SquareRank(work: e))),
-                ],
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    ...works.map((e) => Container(width: SizeConfig.screenWidth / 7.8, child: SquareRank(work: e))),
+                  ],
+                ),
               )
           )
         ],
