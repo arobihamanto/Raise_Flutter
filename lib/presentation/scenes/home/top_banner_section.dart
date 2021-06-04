@@ -1,5 +1,6 @@
 import 'package:Raise_Flutter/domain/entities/home_model.dart';
 import 'package:Raise_Flutter/presentation/widgets/cache_image_network.dart';
+import 'package:Raise_Flutter/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
@@ -16,7 +17,7 @@ class TopBannerSection extends StatefulWidget {
 class _TopBannerSectionState extends State<TopBannerSection> {
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
+    final screenWidth = SizeConfig.screenWidth;
     final banners = widget.section.banners;
     return Container(
       margin: EdgeInsets.symmetric(vertical: kDefaultPadding / 2),
