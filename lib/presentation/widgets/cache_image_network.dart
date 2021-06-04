@@ -21,10 +21,10 @@ class CacheImageNetwork extends StatelessWidget {
     return Container(
       height: height,
       width: width,
-
-      child: HtmlElementView(
-        viewType: imageUrl,
-      ),
+      child: Image.network(imageUrl, fit: BoxFit.cover),
+      // child: HtmlElementView(
+      //   viewType: imageUrl,
+      // ),
     );
   }
 
