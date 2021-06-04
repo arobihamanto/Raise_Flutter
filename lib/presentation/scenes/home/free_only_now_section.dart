@@ -37,10 +37,9 @@ class FreeOnlyNowSection extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               children: [
                 ...works.map((e) => Container(
-                  padding: EdgeInsets.only(left: kDefaultPadding / 2),
-                    width: SizeConfig.screenWidth / 4.8,
-                    child: SquareWorkItem(work: e))
-                )
+                    padding: EdgeInsets.only(left: kDefaultPadding / 2),
+                    width: SizeConfig.screenWidth / 5.8,
+                    child: SquareWorkItem(work: e)))
               ],
             ),
           ),

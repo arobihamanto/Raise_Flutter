@@ -37,7 +37,7 @@ class WorksSection extends StatelessWidget {
               children: [
                 ...works.map((e) => Container(
                     padding: EdgeInsets.only(left: kDefaultPadding / 2),
-                    width: SizeConfig.screenWidth / 4.8,
+                    width: SizeConfig.screenWidth / 5.8,
                     child: SquareWorkItem(work: e))
                 )
               ],
