@@ -29,6 +29,10 @@ class HomeBloc {
     return home.sections.firstWhere((element) => element.type == 'sample_images');
   }
 
+  Section get banners {
+    return home.sections.firstWhere((element) => element.type == 'banners');
+  }
+
   String homeJSON =
   r"""
   {

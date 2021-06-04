@@ -1,5 +1,6 @@
 import 'package:Raise_Flutter/constants.dart';
 import 'package:Raise_Flutter/domain/entities/home_model.dart';
+import 'package:Raise_Flutter/presentation/scenes/home/banner_section.dart';
 import 'package:Raise_Flutter/presentation/scenes/home/daily_ranking_section.dart';
 import 'package:Raise_Flutter/presentation/scenes/home/free_only_now_section.dart';
 import 'package:Raise_Flutter/presentation/scenes/home/ranking_section.dart';
@@ -34,7 +35,8 @@ class _HomeSceneState extends State<HomeScene> {
                 FreeOnlyNowSection(section: widget.bloc.freOnlyNow),
                 RankingSection(section: widget.bloc.ranking),
                 WorksSection(section: widget.bloc.works),
-                SampleImageSection(section: widget.bloc.sampleImage,)
+                SampleImageSection(section: widget.bloc.sampleImage),
+                BannerSection(section: widget.bloc.banners),
               ]),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
