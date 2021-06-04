@@ -21,6 +21,10 @@ class HomeBloc {
     return home.sections.firstWhere((element) => element.type == 'ranking');
   }
 
+  Section get works {
+    return home.sections.firstWhere((element) => element.type == 'works');
+  }
+
   String homeJSON =
   r"""
   {

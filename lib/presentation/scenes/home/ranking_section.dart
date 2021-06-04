@@ -13,10 +13,11 @@ class RankingSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final ranking = section.rankings.first;
     return Container(
+      color: kGreyColor,
       child: Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
+            padding: EdgeInsets.symmetric(horizontal: kDefaultPadding, vertical: kDefaultPadding / 2),
             child: Row(
               children: [
                 Text(section.title),
@@ -32,20 +33,20 @@ class RankingSection extends StatelessWidget {
                 Opacity(
                   opacity: 0.4,
                   child: Container(
+                      padding: EdgeInsets.all(kDefaultPadding),
                       width: SizeConfig.screenWidth / 3,
-                      child: RankingSectionItem(ranking: ranking)
-                  ),
+                      child: RankingSectionItem(ranking: ranking)),
                 ),
                 Container(
+                    padding: EdgeInsets.all(kDefaultPadding),
                     width: SizeConfig.screenWidth / 3,
-                    child: RankingSectionItem(ranking: ranking)
-                ),
+                    child: RankingSectionItem(ranking: ranking)),
                 Opacity(
                   opacity: 0.4,
                   child: Container(
+                      padding: EdgeInsets.all(kDefaultPadding),
                       width: SizeConfig.screenWidth / 3,
-                      child: RankingSectionItem(ranking: ranking)
-                  ),
+                      child: RankingSectionItem(ranking: ranking)),
                 )
               ],
             ),
@@ -57,7 +58,6 @@ class RankingSection extends StatelessWidget {
 }
 
 class RankingSectionItem extends StatelessWidget {
-
   final Ranking ranking;
 
   RankingSectionItem({this.ranking});
@@ -80,7 +80,6 @@ class RankingSectionItem extends StatelessWidget {
   }
 }
 
-
 class RankingWorkItem extends StatelessWidget {
   final RankingWork work;
 
@@ -97,26 +96,30 @@ class RankingWorkItem extends StatelessWidget {
             ),
           ),
           Expanded(
-              flex: 3,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      SizedBox(width: kDefaultPadding),
-                      Expanded(child: Text(work.title, maxLines: 1,)),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      SizedBox(width: kDefaultPadding),
-                      Expanded(child: Text('👁  ${work.viewCount}', maxLines: 1, style: TextStyle(fontSize: 10),)),
-                      SizedBox(width: kDefaultPadding / 2),
-                      Expanded(child: Text('🏳️  ${work.commentCount}', maxLines: 1, style: TextStyle(fontSize: 10),)),
-                    ],
-                  ),
-                ],
-              )),
+            flex: 3,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  work.title,
+                  maxLines: 1,
+                  style: Theme.of(context).textTheme.button,
+                ),
+                Row(
+                  children: [
+                    Text('👁  ${work.viewCount}',
+                        maxLines: 1,
+                        // overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context).textTheme.caption.apply(fontSizeDelta: 0.01, color: kContentColorDarkTheme)),
+                    Text('🏳️  ${work.commentCount}',
+                        maxLines: 1,
+                        style: Theme.of(context).textTheme.caption.apply(fontSizeDelta: 0.01, color: kContentColorDarkTheme)),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

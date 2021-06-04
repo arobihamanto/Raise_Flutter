@@ -21,6 +21,7 @@ class DailyRankingSection extends StatelessWidget {
     final works = dailyRanking.monday.works;
     final screenWidth = SizeConfig.screenWidth;
     return Container(
+      color: kGreyColor,
       height: screenWidth / 1.15,
       child: Column(
         children: [
