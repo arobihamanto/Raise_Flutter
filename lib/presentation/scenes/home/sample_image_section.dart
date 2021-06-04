@@ -4,18 +4,19 @@ import 'package:Raise_Flutter/presentation/widgets/cache_image_network.dart';
 import 'package:Raise_Flutter/utils/size_config.dart';
 import 'package:flutter/material.dart';
 
-class WorksSection extends StatelessWidget {
+class SampleImageSection extends StatelessWidget {
 
   final Section section;
 
-  WorksSection({this.section});
+  SampleImageSection({this.section});
 
   @override
   Widget build(BuildContext context) {
-    final sectionHeight = SizeConfig.screenWidth / 4;
-    final itemWidth = sectionHeight * 0.75;
-    final works = section.works;
+    final sectionHeight = SizeConfig.screenWidth * 0.65;
+    final itemWidth = SizeConfig.screenWidth * 0.3;
+    final works = section.sampleImages;
     return Container(
+      color: kGreyColor,
       height: sectionHeight,
       child: Column(
         children: [
@@ -38,9 +39,9 @@ class WorksSection extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               children: [
                 ...works.map((e) => Container(
-                    padding: EdgeInsets.only(left: kDefaultPadding / 2),
+                    padding: EdgeInsets.only(left: kDefaultPadding / 2.5),
                     width: itemWidth,
-                    child: SquareWorkItem(work: e))
+                    child: SampleImageItem(sampleImage: e))
                 )
               ],
             ),
@@ -51,27 +52,31 @@ class WorksSection extends StatelessWidget {
   }
 }
 
-class SquareWorkItem extends StatelessWidget {
+class SampleImageItem extends StatelessWidget {
 
-  final SectionWork work;
+  final SampleImage sampleImage;
 
-  SquareWorkItem({this.work});
+  SampleImageItem({this.sampleImage});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
             flex: 4,
             child: CacheImageNetwork(
-                imageURL: work.image.url
+                imageURL: sampleImage.image.url
             ),
           ),
           Expanded(
-              child: Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(child: Text(work.title, maxLines: 1,)),
+                  SizedBox(height: 8),
+                  Expanded(child: Text(sampleImage.title, maxLines: 1,)),
+                  Expanded(child: Text(sampleImage.description, maxLines: 2,)),
                 ],
               )
           ),

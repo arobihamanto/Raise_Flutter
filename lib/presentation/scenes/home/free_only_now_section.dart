@@ -13,9 +13,11 @@ class FreeOnlyNowSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final sectionHeight = SizeConfig.screenWidth / 4;
+    final itemWidth = sectionHeight * 0.75;
     final works = section.works;
     return Container(
-      height: 200,
+      height: sectionHeight,
       child: Column(
         children: [
           Expanded(
@@ -38,7 +40,7 @@ class FreeOnlyNowSection extends StatelessWidget {
               children: [
                 ...works.map((e) => Container(
                     padding: EdgeInsets.only(left: kDefaultPadding / 2),
-                    width: SizeConfig.screenWidth / 5.8,
+                    width:  itemWidth,
                     child: SquareWorkItem(work: e)))
               ],
             ),

@@ -5,21 +5,27 @@ import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
 
-class DailyRankingSection extends StatelessWidget {
+class DailyRankingSection extends StatefulWidget {
 
   Section section;
 
   DailyRankingSection({this.section});
 
   @override
+  _DailyRankingSectionState createState() => _DailyRankingSectionState();
+}
+
+class _DailyRankingSectionState extends State<DailyRankingSection> {
+  @override
   Widget build(BuildContext context) {
     return _buildDailyRanking();
   }
 
   _buildDailyRanking() {
-    final dailyRanking = section.dailyRankings.first;
+    final dailyRanking = widget.section.dailyRankings.first;
     final works = dailyRanking.monday.works;
     final screenWidth = SizeConfig.screenWidth;
+    final padding = screenWidth * 0.04;
     return Container(
       color: kGreyColor,
       height: screenWidth / 1.15,
@@ -32,11 +38,11 @@ class DailyRankingSection extends StatelessWidget {
           Expanded(
             flex: 5,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+              padding: EdgeInsets.symmetric(horizontal: padding),
               child: Row(
                 children: [
                   Expanded(
-                    child: LandscapeRank(work: works.first),
+                    child: DailyRankingSquareRank(work: works.first),
                   ),
                   Expanded(
                       child: Container(
@@ -46,8 +52,8 @@ class DailyRankingSection extends StatelessWidget {
                               flex: 3,
                               child: Row(
                                 children: [
-                                  Expanded(child: SquareRank(work: works[1])),
-                                  Expanded(child: SquareRank(work: works[2]))
+                                  Expanded(child: DailyRankingSquareRank(work: works[1])),
+                                  Expanded(child: DailyRankingSquareRank(work: works[2]))
                                 ],
                               ),
                             ),
@@ -55,8 +61,8 @@ class DailyRankingSection extends StatelessWidget {
                               flex: 2,
                               child: Row(
                                 children: [
-                                  Expanded(child: LandscapeRank(work: works[3])),
-                                  Expanded(child: LandscapeRank(work: works[3]))
+                                  Expanded(child: DailyRankingLandscapeRank(work: works[3])),
+                                  Expanded(child: DailyRankingLandscapeRank(work: works[3]))
                                 ],
                               ),
                             )
@@ -70,11 +76,15 @@ class DailyRankingSection extends StatelessWidget {
           Expanded(
               flex: 2,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                padding: EdgeInsets.symmetric(horizontal: padding),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    ...works.map((e) => Container(width: SizeConfig.screenWidth / 7.8, child: SquareRank(work: e))),
+                    ...works.map((e) => Container(
+                        width: screenWidth / 7.8,
+                        height: screenWidth / 5.5,
+                        child: DailyRankingSquareRank(work: e))
+                    ),
                   ],
                 ),
               )
@@ -151,19 +161,18 @@ class DailyRankingSection extends StatelessWidget {
       ),
     );
   }
-
 }
 
 
-class SquareRank extends StatelessWidget {
+class DailyRankingSquareRank extends StatelessWidget {
 
   final FridayWork work;
-  const SquareRank({Key key, this.work}) : super(key: key);
+  const DailyRankingSquareRank({Key key, this.work}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(kDefaultPadding / 2),
+        padding: EdgeInsets.all(kDefaultPadding / 6),
         child: Column(
           children: [
             Expanded(
@@ -176,8 +185,8 @@ class SquareRank extends StatelessWidget {
             ),
             Row(
               children: [
-                Expanded(child: Text('Views: ${work.viewCount}', maxLines: 1)),
-                Expanded(child: Text('Comment: ${work.commentCount}', maxLines: 1)),
+                Expanded(child: Text('👁 ${work.viewCount}', maxLines: 1)),
+                Expanded(child: Text('🏳 ${work.commentCount}', maxLines: 1)),
               ],
             )
           ],
@@ -185,15 +194,15 @@ class SquareRank extends StatelessWidget {
   }
 }
 
-class LandscapeRank extends StatelessWidget {
+class DailyRankingLandscapeRank extends StatelessWidget {
   final FridayWork work;
 
-  const LandscapeRank({Key key, this.work}) : super(key: key);
+  const DailyRankingLandscapeRank({Key key, this.work}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: EdgeInsets.all(kDefaultPadding / 2),
+        padding: EdgeInsets.all(kDefaultPadding / 6),
         child: Column(
           children: [
             Expanded(
@@ -201,13 +210,14 @@ class LandscapeRank extends StatelessWidget {
             ),
             Row(
               children: [
-                Expanded(child: Text(work.title, maxLines: 1)),
+                Text(work.title)
+                //Expanded(child: Text(work.title, maxLines: 1, style: Theme.of(context).textTheme.headline4,)),
               ],
             ),
             Row(
               children: [
-                Expanded(child: Text('Views: ${work.viewCount}', maxLines: 1)),
-                Expanded(child: Text('Comment: ${work.commentCount}', maxLines: 1)),
+                Expanded(child: Text('👁 ${work.viewCount}', maxLines: 1)),
+                Expanded(child: Text('🏳 ${work.commentCount}', maxLines: 1)),
               ],
             )
           ],

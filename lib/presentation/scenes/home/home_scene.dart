@@ -3,6 +3,7 @@ import 'package:Raise_Flutter/domain/entities/home_model.dart';
 import 'package:Raise_Flutter/presentation/scenes/home/daily_ranking_section.dart';
 import 'package:Raise_Flutter/presentation/scenes/home/free_only_now_section.dart';
 import 'package:Raise_Flutter/presentation/scenes/home/ranking_section.dart';
+import 'package:Raise_Flutter/presentation/scenes/home/sample_image_section.dart';
 import 'package:Raise_Flutter/presentation/scenes/home/top_banner_section.dart';
 import 'package:Raise_Flutter/presentation/scenes/home/works_section.dart';
 import 'package:Raise_Flutter/presentation/widgets/cache_image_network.dart';
@@ -33,6 +34,7 @@ class _HomeSceneState extends State<HomeScene> {
                 FreeOnlyNowSection(section: widget.bloc.freOnlyNow),
                 RankingSection(section: widget.bloc.ranking),
                 WorksSection(section: widget.bloc.works),
+                SampleImageSection(section: widget.bloc.sampleImage,)
               ]),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
